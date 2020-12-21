@@ -6,6 +6,10 @@ tasks:
     path: /tareas
     controller: App\Controller\TaskController::index
 
+task_detail:
+    path: /tarea/{id}
+    controller: App\Controller\TaskController::taskDetail
+
 register:
     path: /registro
     controller: App\Controller\RegistrationController::register

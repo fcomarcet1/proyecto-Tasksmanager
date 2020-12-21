@@ -53,7 +53,7 @@
                         </td>
                         <td>{{ task.deliveryDate|date("d/m/Y") }}</td>
                         <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip">
+                            <a href="{{ path('task_detail',{'id':task.id}) }}" class="view" title="View" data-toggle="tooltip">
                                 <i class="material-icons view">&#xE417;</i>
                             </a>
                             <a href="#" class="edit" title="Edit" data-toggle="tooltip">
