@@ -98,7 +98,18 @@ nav ul li a:hover{
     clear: both;
 }
 
+
+
 /* Table tasks list */
+.add-task {
+    display: block;
+    float: right;
+}
+
+span.material-icons.add {
+    font-size: 50px;
+}
+
 tr {
     text-align: center;
 }
@@ -238,6 +249,7 @@ body{
 }
 .text-muted {
     color: #98a6ad!important;
+    text-align: justify;
 }
 
 p {

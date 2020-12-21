@@ -36,6 +36,10 @@
                         <hr>
                         <ul class="list-inline task-dates m-b-0 mt-5">
                             <li>
+                                <h5 class="m-b-5">Horas presupuestadas:</h5>
+                                <p>{{ task.hours }} horas</p>
+                            </li>
+                            <li>
                                 <h5 class="m-b-5">Fecha de inicio:</h5>
                                 <p>{{ task.createdAt|date("d/m/Y")}}</p>
                             </li>
@@ -55,7 +59,7 @@
                         <hr>
                         <div class="clearfix"></div>
                         <div class="assign-team mt-4">
-                            <h5 class="m-b-5">Assign to</h5>
+                            <h5 class="m-b-5">Assignada a:</h5>
                             <p>{{ task.user.name }} {{ task.user.surname }}</p>
                         </div>
                         <hr>
