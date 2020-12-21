@@ -6,6 +6,7 @@ use App\Repository\TaskRepository;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="tasks")
@@ -21,21 +22,36 @@ class Task
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Please enter a title")
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zA-Z1-9 ]+$/i",
+     *     htmlPattern = "^[a-zA-Z1-9 ]+$",
+     *     message = "El campo titulo '{{ value }}' solo puede contener letras y numeros"
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your title  must be at least {{ limit }} characters long",
+     *      maxMessage = "Your title  cannot be longer than {{ limit }} characters"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank(message="Please enter a content")
      * @ORM\Column(type="text")
      */
     private $content;
 
     /**
+     * @Assert\NotBlank(message="Please enter nº hours of project")
      * @ORM\Column(type="integer", nullable=true)
      */
     private $hours;
 
     /**
+     * @Assert\NotBlank(message="Please enter the priority")
      * @ORM\Column(type="string", length=25)
      */
     private $priority;
@@ -47,6 +63,7 @@ class Task
 
     /**
      * @var DateTime
+     * @Assert\NotBlank(message="Please enter the delivery date")
      * @ORM\Column(type="datetime", nullable=false)
      */
     private $delivery_date;
@@ -71,7 +88,6 @@ class Task
 
     /**
      * Task constructor.
-     * @param $completed
      */
     public function __construct()
     {

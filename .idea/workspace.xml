@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f678a9b-9848-4fd4-8e72-6e572d343c82" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TaskController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TaskFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TaskFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/task/detail.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/task/detail.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/task/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/task/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/task/new_task.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/task/new_task.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +183,7 @@
       <workItem from="1608451043974" duration="3000" />
       <workItem from="1608460846435" duration="2159000" />
       <workItem from="1608533365367" duration="635000" />
-      <workItem from="1608535641972" duration="12479000" />
+      <workItem from="1608535641972" duration="13041000" />
     </task>
     <task id="LOCAL-00001" summary="resuelto error2">
       <created>1608203287613</created>
