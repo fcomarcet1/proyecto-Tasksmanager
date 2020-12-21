@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Form\TaskFormType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,6 +52,24 @@ class TaskController extends AbstractController
 
         return $this->render('task/detail.html.twig', [
             'task' => $task,
+        ]);
+    }
+
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function newTask(Request $request): Response
+    {
+
+        $task = new Task();
+        $form = $this->createForm(TaskFormType::class, $task);
+        $form->handleRequest($request);
+
+
+        return $this->render('task/new_task.html.twig', [
+            'taskForm' => $form->createView(),
         ]);
     }
 
