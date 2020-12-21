@@ -1,0 +1,19 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+tasks:
+    path: /tareas
+    controller: App\Controller\TaskController::index
+
+register:
+    path: /registro
+    controller: App\Controller\RegistrationController::register
+
+login:
+    path: /login
+    controller: App\Controller\LoginController::login
+
+logout:
+    path: /logout
+    controller: App\Controller\LoginController::logout

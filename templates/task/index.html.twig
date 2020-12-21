@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Todas las tareas{% endblock %}
+
+{% block body %}
+    <!-- Flash Message register success -->
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h2>Lista de tareas.</h2>
+    <hr>
+    <div class="container mt-3">
+        <h4>Buscar tarea:</h4>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <br>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>TAREA</th>
+                <th>RESPONSABLE</th>
+                <th>HRS PRESUP</th>
+                <th>PRIORIDAD</th>
+                <th>ESTADO</th>
+                <th>FECHA DE ENTREGA</th>
+                <th>ACCIONES</th>
+            </tr>
+            </thead>
+            <tbody id="myTable">
+             {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.id }}</td>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.user.name }} {{ task.user.surname }}</td>
+                        <td>{{ task.hours }}</td>
+                        <td>
+                            {% if task.priority == 'HIGH' %}
+                                {{ 'Alta' }}
+                            {% elseif task.priority == 'NORMAL' %}
+                                {{ 'Normal' }}
+                            {% else %}
+                                {{ 'Baja' }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if task.completed == 'YES' %}
+                                {{ 'Finalizada' }}
+                            {% else %}
+                                {{ 'En progreso...' }}
+                            {% endif %}
+                        </td>
+                        <td>{{ task.deliveryDate|date("d/m/Y") }}</td>
+                        <td>
+                            <a href="#" class="view" title="View" data-toggle="tooltip">
+                                <i class="material-icons view">&#xE417;</i>
+                            </a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip">
+                                <i class="material-icons edit">&#xE254;</i>
+                            </a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip">
+                                <i class="material-icons delete">&#xE872;</i>
+                            </a>
+                        </td>
+                    </tr>
+             {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {#
+    <!-- User login -->
+    {% if app.user %}
+        dump(app.user)
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }},
+            <a href="{{ path('logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    #}
+
+
+{% endblock %}
