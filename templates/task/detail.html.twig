@@ -3,7 +3,13 @@
 {% block title %}Detalle tarea{% endblock %}
 
 {% block body %}
-    <!-- Flash Message register success -->
+    <!-- Flash Message add task success -->
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <!-- Flash Message add task error -->
     {% for message in app.flashes('error') %}
         <div class="alert alert-warning">
             {{ message }}

@@ -70,6 +70,16 @@ class Task
     private $user;
 
     /**
+     * Task constructor.
+     * @param $completed
+     */
+    public function __construct()
+    {
+        $this->completed = 'NO';
+    }
+
+
+    /**
      * @return int|null
      */
     public function getId(): ?int

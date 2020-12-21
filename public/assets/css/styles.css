@@ -131,10 +131,7 @@ i.material-icons.delete {
 }
 
 /* Task detail */
-body{
-    margin-top:20px;
-    background: #90d2ff;
-}
+
 .card-box {
     padding: 20px;
     border-radius: 3px;

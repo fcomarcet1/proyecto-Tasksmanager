@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use App\Entity\User;
 use App\Form\TaskFormType;
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Class TaskController
@@ -58,15 +62,54 @@ class TaskController extends AbstractController
 
     /**
      * @param Request $request
+     * @param UserInterface $user
+     * @param ValidatorInterface $validator
      * @return Response
      */
-    public function newTask(Request $request): Response
+    public function createTask(
+        Request $request,
+        UserInterface $user,
+        ValidatorInterface $validator): Response
     {
 
+
+        // Form -> add new task
         $task = new Task();
         $form = $this->createForm(TaskFormType::class, $task);
         $form->handleRequest($request);
 
+        // Check form is submit & valid
+        if ($form->isSubmitted() && $form->isValid())
+        {
+
+            $task = $form->getData();
+            $task->setUser($user); // Get user
+            $task->setCreatedAt(new DateTime('now'));
+
+            //Validate object $user with Validator Service before persist
+            $errors = $validator->validate($task);
+            if (count($errors) > 0)
+            {
+                return new Response((string) $errors, 400);
+            }
+
+            // Persist data in DB
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+
+            // Flash message
+            $this->addFlash('success', 'Tarea añadida correctamente.');
+
+            return $this->redirect($this->generateUrl('task_detail', [
+                'id' => $task->getId()
+            ]));
+
+            //return $this->redirectToRoute('tasks');
+
+
+
+        }
 
         return $this->render('task/new_task.html.twig', [
             'taskForm' => $form->createView(),

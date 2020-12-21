@@ -19,7 +19,7 @@ class TaskFormType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'titulo: ',
+                'label' => 'Titulo: ',
                 'required' => true
             ])
             ->add('content', TextareaType::class, [
@@ -33,8 +33,8 @@ class TaskFormType extends AbstractType
             ->add('priority', ChoiceType::class, [
                 'label' => 'Prioridad: ',
                 'choices'  => [
-                    'Normal' => null,
-                    'Alta' => true,
+                    'Normal' => 'NORMAL',
+                    'Alta' => 'HIGH',
                 ]
             ])
             ->add('delivery_date', DateType::class, [
