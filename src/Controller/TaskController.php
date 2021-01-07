@@ -106,9 +106,6 @@ class TaskController extends AbstractController
             ]));
 
             //return $this->redirectToRoute('tasks');
-
-
-
         }
 
         return $this->render('task/new_task.html.twig', [
