@@ -25,9 +25,9 @@
                             <div class="media-body">
                                 <h1 class="media-heading mb-0 mt-0">{{ task.title }}</h1>
                                 {% if task.priority == 'HIGH' %}
-                                    <span class="badge badge-danger">Alta</span>
+                                    <strong>Prioridad: </strong><span class="badge badge-danger">Alta</span>
                                 {% else %}
-                                    <span class="badge badge-success">Normal</span>
+                                    <strong>Prioridad: </strong><span class="badge badge-success">Normal</span>
                                 {% endif %}
                             </div>
                         </div>
@@ -69,6 +69,9 @@
                             <p>{{ task.user.name }} {{ task.user.surname }}</p>
                         </div>
                         <hr>
+                        <div class="assign-team mt-4">
+                            <a href="{{ path('tasks') }}">Volver a inicio</a>
+                        </div>
                     </div>
                 </div>
             </div>

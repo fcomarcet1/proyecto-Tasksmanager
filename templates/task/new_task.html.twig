@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}TaskManager{% endblock %}
 
 {% block body %}
-    <h1>Nueva tarea:</h1>
+    {% if edit is defined %}
+        <h1>Editar tarea</h1>
+    {% else %}
+        <h1>Crear tarea</h1>
+    {% endif %}
     {{ form_start(taskForm) }}
         {{ form_row(taskForm.title) }}
         {{ form_row(taskForm.content) }}
         {{ form_row(taskForm.hours) }}
         {{ form_row(taskForm.priority) }}
         {{ form_row(taskForm.delivery_date) }}
-        <button type="submit" class="btn">Añadir tarea</button>
+        <button type="submit" class="btn">Guardar</button>
     {{ form_end(taskForm) }}
 {% endblock %}

@@ -60,7 +60,7 @@
                             <a href="{{ path('task_detail',{'id':task.id}) }}" class="view" title="View" data-toggle="tooltip">
                                 <i class="material-icons view">&#xE417;</i>
                             </a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip">
+                            <a href="{{ path('task_edit',{'id':task.id}) }}" class="edit" title="Edit" data-toggle="tooltip">
                                 <i class="material-icons edit">&#xE254;</i>
                             </a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip">
@@ -71,6 +71,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+
         {% else %}
             <strong>No tienes tareas en este momento.</strong>
         {% endif %}
