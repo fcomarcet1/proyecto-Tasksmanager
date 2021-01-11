@@ -315,6 +315,15 @@ input[type="submit"]:hover{
 }
 
 
+/* Buttons modal delete task*/
+.btn btn-danger Modal-delete{
+    background: crimson;
+}
+
+.btn btn-primary Modal-delete{
+    background: green;
+}
+
 /* Footer */
 footer{
     font-family: Helvetica, Arial, sans-serif;

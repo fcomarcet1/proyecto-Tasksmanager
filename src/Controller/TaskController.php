@@ -146,6 +146,12 @@ class TaskController extends AbstractController
     ): Response
     {
         //var_dump($task);
+
+        // Validate if task exists
+        if(!$task)
+        {
+            return $this->redirectToRoute('tasks');
+        }
         //Validate if user is creator of task (User logued or user_id(task) = user_id(logued))
         if(!$user || ($user->getId() !== $task->getUser()->getId()) )
         {
@@ -193,5 +199,38 @@ class TaskController extends AbstractController
             'edit' => true,
             'taskForm' => $form->createView()
         ]);
+    }
+
+    //*************** Task delete *****************
+
+    /**
+     * @param Task $task
+     * @param UserInterface $user
+     * @return RedirectResponse
+     */
+    public function deleteTask(Task $task, UserInterface $user)
+    {
+        // Validate if user logged is the same of creator of task
+        if (!$user || ($task->getUser()->getId() !== $user->getId()))
+        {
+            return $this->redirectToRoute('tasks');
+        }
+
+        // Validate if task exists
+        if(!$task)
+        {
+            return $this->redirectToRoute('tasks');
+        }
+
+        // Remove task from DB.
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($task);
+        $em->flush();
+
+        // Flash message
+        $this->addFlash('success', 'La tarea fue eliminada correctamente.');
+
+        return $this->redirectToRoute('tasks');
+
     }
 }

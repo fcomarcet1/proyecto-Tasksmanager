@@ -63,9 +63,30 @@
                             <a href="{{ path('task_edit',{'id':task.id}) }}" class="edit" title="Edit" data-toggle="tooltip">
                                 <i class="material-icons edit">&#xE254;</i>
                             </a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip">
+                            <a href="{{ path('task_delete',{'id':task.id}) }}" class="delete" title="Delete" data-toggle="modal" data-target="#delete_task_Modal">
                                 <i class="material-icons delete">&#xE872;</i>
                             </a>
+                            <!-- Modal -->
+                            <div class="modal fade" id="delete_task_Modal" tabindex="-1" role="dialog" aria-labelledby="delete_task_ModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar {{ task.title }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Estas seguro que deseas eliminar la tarea?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger Modal-delete" data-dismiss="modal">Cancelar</button>
+                                            <a href="{{ path('task_delete'),{'id':task.id}  }}" class="btn btn-danger Modal-delete" data-dismiss="modal">Eliminar</a>
+                                            {# <button type="button" class="btn btn-primary Modal-delete">Eliminar</button> #}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 {% endfor %}
