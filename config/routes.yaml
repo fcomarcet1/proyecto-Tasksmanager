@@ -14,6 +14,10 @@ task_create:
     path: /crear-tarea
     controller: App\Controller\TaskController::createTask
 
+my_tasks:
+    path: /mis-tareas
+    controller: App\Controller\TaskController::myTasks
+
 register:
     path: /registro
     controller: App\Controller\RegistrationController::register

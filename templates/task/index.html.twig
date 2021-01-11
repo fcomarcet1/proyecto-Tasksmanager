@@ -9,8 +9,10 @@
             {{ message }}
         </div>
     {% endfor %}
-    {% set user_id = app.user.id %}
-    {# dump(user_id) }} #}
+    {% if app.user %}
+        {% set user_id = app.user.id %}
+        {# dump(user_id) }} #}
+    {% endif %}
     <h2>Lista de tareas.</h2>
     <hr>
     <div class="container mt-3">
@@ -20,60 +22,64 @@
             <a href="{{ path('task_create') }}"><span class="material-icons add">add_box</span></a>
         </div>
         <br>
-        <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-            <tr>
-                <th>#</th>
-                <th>TAREA</th>
-                <th>RESPONSABLE</th>
-                <th>HRS PRESUP</th>
-                <th>PRIORIDAD</th>
-                <th>ESTADO</th>
-                <th>FECHA DE ENTREGA</th>
-                <th>ACCIONES</th>
-            </tr>
-            </thead>
-            <tbody id="myTable">
-             {% for task in tasks %}
-                    <tr>
-                        <td>{{ task.id }}</td>
-                        <td>{{ task.title }}</td>
-                        <td>{{ task.user.name }} {{ task.user.surname }}</td>
-                        <td>{{ task.hours }}</td>
-                        <td>
-                            {% if task.priority == 'HIGH' %}
-                                {{ 'Alta' }}
-                            {% elseif task.priority == 'NORMAL' %}
-                                {{ 'Normal' }}
-                            {% else %}
-                                {{ 'Baja' }}
-                            {% endif %}
-                        </td>
-                        <td>
-                            {% if task.completed == 'YES' %}
-                                {{ 'Finalizada' }}
-                            {% else %}
-                                {{ 'En progreso...' }}
-                            {% endif %}
-                        </td>
-                        <td>{{ task.deliveryDate|date("d/m/Y") }}</td>
-                        <td>
-                            <a href="{{ path('task_detail',{'id':task.id}) }}" class="view" title="View" data-toggle="tooltip">
-                                <i class="material-icons view">&#xE417;</i>
-                            </a>
-                            {# Show only the creator of the task #}
-                            {% if task.user.id == user_id  %}
-                                <a href="#" class="edit" title="Edit" data-toggle="tooltip">
-                                    <i class="material-icons edit">&#xE254;</i>
+        {% if tasks %}
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>TAREA</th>
+                    <th>RESPONSABLE</th>
+                    <th>HRS PRESUP</th>
+                    <th>PRIORIDAD</th>
+                    <th>ESTADO</th>
+                    <th>FECHA DE ENTREGA</th>
+                    <th>ACCIONES</th>
+                </tr>
+                </thead>
+                <tbody id="myTable">
+                 {% for task in tasks %}
+                        <tr>
+                            <td>{{ task.id }}</td>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.user.name }} {{ task.user.surname }}</td>
+                            <td>{{ task.hours }}</td>
+                            <td>
+                                {% if task.priority == 'HIGH' %}
+                                    {{ 'Alta' }}
+                                {% elseif task.priority == 'NORMAL' %}
+                                    {{ 'Normal' }}
+                                {% else %}
+                                    {{ 'Baja' }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if task.completed == 'YES' %}
+                                    {{ 'Finalizada' }}
+                                {% else %}
+                                    {{ 'En progreso...' }}
+                                {% endif %}
+                            </td>
+                            <td>{{ task.deliveryDate|date("d/m/Y") }}</td>
+                            <td>
+                                <a href="{{ path('task_detail',{'id':task.id}) }}" class="view" title="View" data-toggle="tooltip">
+                                    <i class="material-icons view">&#xE417;</i>
                                 </a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip">
-                                    <i class="material-icons delete">&#xE872;</i>
-                                </a>
-                           {% endif %}
-                    </tr>
-             {% endfor %}
-            </tbody>
-        </table>
+                                {# Show only the creator of the task #}
+                                {% if task.user.id == user_id  %}
+                                    <a href="#" class="edit" title="Edit" data-toggle="tooltip">
+                                        <i class="material-icons edit">&#xE254;</i>
+                                    </a>
+                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip">
+                                        <i class="material-icons delete">&#xE872;</i>
+                                    </a>
+                               {% endif %}
+                        </tr>
+                 {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <strong> No hay ninguna tarea actualmente.</strong>
+        {% endif %}
     </div>
 
     {#

@@ -66,7 +66,7 @@ class RegistrationController extends AbstractController
             // Flash message
             $this->addFlash('success', 'Te has registrado correctamente.Por favor inicia sesión.');
 
-            return $this->redirectToRoute('tasks');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('registration/register.html.twig', [

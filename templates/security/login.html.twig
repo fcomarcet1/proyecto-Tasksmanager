@@ -3,6 +3,12 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+    <!-- Flash Message register success -->
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
