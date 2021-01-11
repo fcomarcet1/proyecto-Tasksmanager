@@ -9,6 +9,8 @@
             {{ message }}
         </div>
     {% endfor %}
+    {% set user_id = app.user.id %}
+    {# dump(user_id) }} #}
     <h2>Lista de tareas.</h2>
     <hr>
     <div class="container mt-3">
@@ -59,13 +61,15 @@
                             <a href="{{ path('task_detail',{'id':task.id}) }}" class="view" title="View" data-toggle="tooltip">
                                 <i class="material-icons view">&#xE417;</i>
                             </a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip">
-                                <i class="material-icons edit">&#xE254;</i>
-                            </a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip">
-                                <i class="material-icons delete">&#xE872;</i>
-                            </a>
-                        </td>
+                            {# Show only the creator of the task #}
+                            {% if task.user.id == user_id  %}
+                                <a href="#" class="edit" title="Edit" data-toggle="tooltip">
+                                    <i class="material-icons edit">&#xE254;</i>
+                                </a>
+                                <a href="#" class="delete" title="Delete" data-toggle="tooltip">
+                                    <i class="material-icons delete">&#xE872;</i>
+                                </a>
+                           {% endif %}
                     </tr>
              {% endfor %}
             </tbody>

@@ -47,7 +47,6 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
             //var_dump($user);die();
 
             //Validate object $user with Validator Service before persist

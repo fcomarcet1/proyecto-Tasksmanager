@@ -33,7 +33,7 @@
             <ul>
                 {% if app.user %}
                     <li><a href="{{ path('tasks') }}">Inicio</a></li>
-                    <li><a href="">Tareas</a></li>
+                    <li><a href="{{ path('tasks') }}">Tareas</a></li>
                     <li><a href="">Mis Tareas</a></li>
                     <li class="menu-right"><a href="{{ path('logout') }}">Logout</a></li>
                     <li class="menu-right"><a href="">Bienvenido: {{ app.user.name ~ ' ' ~ app.user.surname }}</a></li>
