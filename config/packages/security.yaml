@@ -45,3 +45,9 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/tareas, roles: ROLE_USER }
+        - { path: ^/tarea, roles: ROLE_USER }
+        - { path: ^/crear-tarea, roles: ROLE_USER }
+        - { path: ^/mis-tareas, roles: ROLE_USER }
+        - { path: ^/editar-tarea, roles: ROLE_USER }
+        - { path: ^/eliminar-tarea, roles: ROLE_USER }
