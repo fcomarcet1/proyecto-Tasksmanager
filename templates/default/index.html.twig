@@ -1,5 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1 class="text-center" data-toggle="tooltip" data-placement="bottom" title="js de bootstrap funcionando :)" >Hola <s>Acceseo</s> acceseo!</h1>
+    <h1 class="text-center" data-toggle="tooltip" data-placement="bottom" title="js de bootstrap funcionando :)" >
+         Bienvenido a Task Manager.
+    </h1>
+    <h4 class="text-center"> Por favor inicia sesión <a href="{{ path('login') }}">login</a> o crea un cuenta <a href="{{ path('register') }}">registrarse</a> para acceder a la aplicación. </h4>
 {% endblock %}
